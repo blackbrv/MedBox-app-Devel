@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "551855096564",
+    "firebase_url": "https://madbox4195-default-rtdb.firebaseio.com",
+    "project_id": "madbox4195",
+    "storage_bucket": "madbox4195.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551855096564:android:b397c24f709a83d62e54a1",
+        "android_client_info": {
+          "package_name": "com.example.medapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRpREPgQFv-d8oNhFBjg1efIx8JWRXRPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
