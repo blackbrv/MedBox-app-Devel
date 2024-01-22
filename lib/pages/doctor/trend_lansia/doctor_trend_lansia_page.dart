@@ -35,6 +35,11 @@ class _dTrendState extends State<dTrend> {
           '${dTrend.doctordate}-${dTrend.doctormonth}-${dTrend.doctoryear}';
       doctorDay = dTrend.doctorfinalDate!;
     });
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                newRoute(widget: widget, doctorDay: doctorDay)));
   }
 
   @override
@@ -81,7 +86,7 @@ class _dTrendState extends State<dTrend> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
+                padding: const EdgeInsets.all(15),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadiusDirectional.circular(20),
@@ -122,8 +127,46 @@ class _dTrendState extends State<dTrend> {
                   ),
                 ),
               ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class newRoute extends StatefulWidget {
+  const newRoute({
+    super.key,
+    required this.widget,
+    required this.doctorDay,
+  });
+
+  final dTrend widget;
+  final String doctorDay;
+
+  @override
+  State<newRoute> createState() => _newRouteState();
+}
+
+class _newRouteState extends State<newRoute> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Data Lansia : ${widget.widget.namaLan}',
+          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                padding: const EdgeInsets.all(15),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.93,
                   decoration: BoxDecoration(
@@ -141,11 +184,40 @@ class _dTrendState extends State<dTrend> {
                   child: Column(
                     children: [
                       const SizedBox(height: 10),
-                      Text(
-                        'Data Lansia : ${widget.namaLan}',
-                        style: TextStyle(color: Colors.red),
+                      Text('Data Tanggal ${widget.doctorDay}'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 20,
+                            color: Colors.red,
+                          ),
+                          Text(' = Tidak Minum Obat'),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            width: 20,
+                            height: 20,
+                            color: Colors.green,
+                          ),
+                          Text(' = Sudah Minum Obat'),
+                        ],
                       ),
-                      Text('Data Tanggal ${doctorDay}'),
+                      const SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 20,
+                            color: Colors.grey,
+                          ),
+                          Text(' = Tidak Ada Data'),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
                       const dTimeTable(pickHour1: '1', pickHour2: '2'),
                       const dTimeTable(pickHour1: '3', pickHour2: '4'),
                       const dTimeTable(pickHour1: '5', pickHour2: '6'),

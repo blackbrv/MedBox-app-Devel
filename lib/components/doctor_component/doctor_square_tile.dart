@@ -107,6 +107,7 @@ class _textInsideContainerState extends State<textInsideContainer> {
         return jam = tcode.get('jam${widget.widget.jampick}');
       }),
       builder: (context, snapshot) {
+        print(jam);
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

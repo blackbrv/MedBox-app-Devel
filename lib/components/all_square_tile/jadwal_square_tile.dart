@@ -4,10 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medapp/pages/auth_page.dart';
 
 class JSquareTile extends StatefulWidget {
-  static DateTime now = new DateTime.now();
+  static DateTime now = DateTime.now();
   final String? jampick;
   static String? qrResult;
-  JSquareTile({
+  const JSquareTile({
     super.key,
     this.jampick,
   });
@@ -41,7 +41,7 @@ class _JSquareTileState extends State<JSquareTile> {
         return StreamBuilder<Object>(
             stream: db
                 .collection(JSquareTile.qrResult!)
-                .doc('${day}-${month}-${year}')
+                .doc('$day-$month-$year')
                 .snapshots()
                 .map(
               (hourData) {
@@ -55,7 +55,7 @@ class _JSquareTileState extends State<JSquareTile> {
             ),
             builder: (context, snapshot) {
               return Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   width: 200,
                   height: 200,
                   decoration: BoxDecoration(
@@ -70,8 +70,9 @@ class _JSquareTileState extends State<JSquareTile> {
   }
 }
 
+// ignore: camel_case_types
 class textInsideContainer extends StatefulWidget {
-  textInsideContainer({
+  const textInsideContainer({
     super.key,
     required this.widget,
   });
@@ -82,6 +83,7 @@ class textInsideContainer extends StatefulWidget {
   State<textInsideContainer> createState() => _textInsideContainerState();
 }
 
+// ignore: camel_case_types
 class _textInsideContainerState extends State<textInsideContainer> {
   String jam = 'No Data';
   int year = JSquareTile.now.year;
@@ -93,7 +95,7 @@ class _textInsideContainerState extends State<textInsideContainer> {
     return StreamBuilder<Object>(
         stream: FirebaseFirestore.instance
             .collection(JSquareTile.qrResult!)
-            .doc('hour_data_${day}-${month}-${year}')
+            .doc('hour_data_$day-$month-$year')
             .snapshots()
             .map((tcode) {
           return jam = tcode.get('jam${widget.widget.jampick}');
@@ -102,7 +104,7 @@ class _textInsideContainerState extends State<textInsideContainer> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.schedule_rounded,
                 size: 50,
               ),
@@ -116,7 +118,7 @@ class _textInsideContainerState extends State<textInsideContainer> {
               ),
               const SizedBox(height: 10),
               Text(
-                '${jam}',
+                jam,
                 style: GoogleFonts.montserrat(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

@@ -34,6 +34,10 @@ class _usrTrendPageState extends State<usrTrendPage> {
           '${usrTrendPage.Date}-${usrTrendPage.Month}-${usrTrendPage.Year}';
       userdayDate = usrTrendPage.finalDate!;
     });
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => setThisToNewTab(userdayDate: userdayDate)));
   }
 
   @override
@@ -111,8 +115,44 @@ class _usrTrendPageState extends State<usrTrendPage> {
                   ),
                 ),
               ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class setThisToNewTab extends StatefulWidget {
+  const setThisToNewTab({
+    super.key,
+    required this.userdayDate,
+  });
+
+  final String userdayDate;
+
+  @override
+  State<setThisToNewTab> createState() => _setThisToNewTabState();
+}
+
+class _setThisToNewTabState extends State<setThisToNewTab> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Data Tanggal ${widget.userdayDate}',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                padding: const EdgeInsets.all(15),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.93,
                   decoration: BoxDecoration(
@@ -130,10 +170,45 @@ class _usrTrendPageState extends State<usrTrendPage> {
                   child: Column(
                     children: [
                       const SizedBox(height: 10),
-                      Text('Data Tanggal $userdayDate'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 20,
+                            color: Colors.red,
+                          ),
+                          Text(' = Tidak Minum Obat'),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            width: 20,
+                            height: 20,
+                            color: Colors.green,
+                          ),
+                          Text(' = Sudah Minum Obat'),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 20,
+                            color: Colors.grey,
+                          ),
+                          Text(' = Tidak Ada Data'),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       tTimeTable(pickHour1: '1', pickHour2: '2'),
                       tTimeTable(pickHour1: '3', pickHour2: '4'),
                       tTimeTable(pickHour1: '5', pickHour2: '6'),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ),

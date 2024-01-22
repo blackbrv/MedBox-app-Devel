@@ -9,6 +9,7 @@ import 'package:medapp/utils/colors.dart';
 import 'package:medapp/utils/image_string.dart';
 
 class UserHomePage extends StatefulWidget {
+  static String? unicCode;
   UserHomePage({super.key});
 
   @override
@@ -19,7 +20,7 @@ class _UserHomePageState extends State<UserHomePage> {
   final user = FirebaseAuth.instance.currentUser!;
   final String userName = AuthPage.x.toString();
   final db = FirebaseFirestore.instance;
-  static String? nasia, usia, unicCode;
+  static String? nasia, usia;
   Stream? userStream;
 
   //signuserout method
@@ -99,7 +100,7 @@ class _UserHomePageState extends State<UserHomePage> {
                       .map((userLan) {
                     nasia = userLan.get('nama_lansia');
                     usia = userLan.get('umur_lansia');
-                    unicCode = userLan.get('kode_alat');
+                    UserHomePage.unicCode = userLan.get('kode_alat');
                     return {};
                   }),
                   builder: (context, snapshot) {
@@ -124,7 +125,7 @@ class _UserHomePageState extends State<UserHomePage> {
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          'Kode Alat : ${unicCode}',
+                          'Kode Alat : ${UserHomePage.unicCode}',
                           style: GoogleFonts.montserrat(
                             color: Colors.black87,
                             fontSize: 16,
