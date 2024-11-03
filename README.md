@@ -1,16 +1,17 @@
-# medapp
 
-A new Flutter project.
+# 💊 MedApp
 
-## Getting Started
+Medication Application
 
-This project is a starting point for a Flutter application.
+Main purpose of this app is to connect to the database, and also update the information on it to display it on the medication box
 
-A few resources to get you started if this is your first Flutter project:
+Medication box is also in my github page check it out
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+It's my final tasks for college
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+It's based on Flutter frameworks and Dart languages.
+## 🚀 About Me
+I'm a front-end web Developer.
+
+Call me if you want to build a website, specially for front-end tasks!
+
